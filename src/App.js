@@ -41,25 +41,27 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='maincontainer'>
+      <div className='container'>
 
-      <h1>Todo App</h1>
-      <input type="text" onChange={(e) => { setNewTodoText(e.target.value) }} />
-      <button onClick={() => createPostApi()}>Add</button>
+        <h1>Todo App</h1>
+        <input type="text" placeholder='write your todo' onChange={(e) => { setNewTodoText(e.target.value) }} />
+        <button className='btnadd' onClick={() => createPostApi()}>Add</button>
 
-      {
-        posts.length
-          ? posts && posts.map(item => (
-            <div>
-              <h4>{item.text}</h4>
+        {
+          posts.length
+            ? posts && posts.map(item => (
+              <div className='displayTodo'>
+                <h3>{item.text}</h3>
 
-              <button onClick={() => deleteApi(item)}>Delete</button>
+                <button className='btndelete' onClick={() => deleteApi(item)}>Delete</button>
 
-            </div>
-          ))
-          : <h4>no data</h4>
-      }
+              </div>
+            ))
+            : <h3>no data</h3>
+        }
 
+      </div>
     </div>
   );
 }
